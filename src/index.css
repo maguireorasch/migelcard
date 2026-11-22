@@ -1,0 +1,227 @@
+@import "tailwindcss";
+
+:root {
+  --pink-baby: #F8C8DC;
+  --pink-blush: #F2AFCB;
+  --rose-dusty: #C76A91;
+  --rose-deep: #963B65;
+  --cream-white: #FFF5F8;
+  --burgundy: #642B48;
+  --champagne: #E8C7A8;
+}
+
+body {
+  font-family: 'Lora', Georgia, serif;
+  background-color: var(--cream-white);
+  color: var(--burgundy);
+  overflow-x: hidden;
+}
+
+.font-editorial {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+.font-script {
+  font-family: 'Great Vibes', cursive;
+}
+
+.font-serif-body {
+  font-family: 'Lora', Georgia, serif;
+}
+
+.font-mono-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+/* 3D Perspective & Card Flip Helpers */
+.perspective-1400 {
+  perspective: 1400px;
+}
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+/* Vintage Paper & Velvet Card Stock Surfaces */
+.paper-grain-overlay {
+  background-image:
+    radial-gradient(rgba(100, 43, 72, 0.04) 1px, transparent 0),
+    radial-gradient(rgba(199, 106, 145, 0.04) 1px, transparent 0);
+  background-size: 24px 24px;
+  background-position: 0 0, 12px 12px;
+}
+
+.vintage-card-front {
+  background: linear-gradient(155deg, #FFF9FB 0%, #FFEFF5 45%, #FBE2EC 100%);
+  box-shadow:
+    0 20px 44px -14px rgba(100, 43, 72, 0.28),
+    0 4px 12px rgba(150, 59, 101, 0.14),
+    inset 0 0 0 1px rgba(232, 199, 168, 0.55);
+}
+
+.vintage-card-back {
+  background: linear-gradient(160deg, #FBD9E7 0%, #F4BBD3 52%, #EFA4C3 100%);
+  box-shadow:
+    0 20px 44px -14px rgba(100, 43, 72, 0.3),
+    0 4px 12px rgba(150, 59, 101, 0.15),
+    inset 0 0 0 1px rgba(255, 245, 248, 0.75);
+}
+
+.rare-foil-card {
+  box-shadow:
+    0 22px 48px -12px rgba(150, 59, 101, 0.35),
+    0 0 24px rgba(232, 199, 168, 0.6),
+    inset 0 0 0 1.5px rgba(232, 199, 168, 0.9);
+}
+
+.secret-foil-card {
+  box-shadow:
+    0 24px 56px -10px rgba(150, 59, 101, 0.48),
+    0 0 32px rgba(232, 199, 168, 0.85),
+    0 0 14px rgba(242, 175, 203, 0.9),
+    inset 0 0 0 2px rgba(232, 199, 168, 1);
+}
+
+/* Realistic Collectible Card Box Surfaces */
+.cardbox-dusty-surface {
+  background: linear-gradient(
+    148deg,
+    #F3C2D6 0%,
+    #DE8FB1 36%,
+    #C76A91 74%,
+    #963B65 100%
+  );
+}
+
+.cardbox-side-surface {
+  background: linear-gradient(180deg, #B5567F 0%, #863259 55%, #642B48 100%);
+}
+
+.cardbox-lid-surface {
+  background: linear-gradient(
+    140deg,
+    #F8CFE0 0%,
+    #E49BBA 42%,
+    #C76A91 84%,
+    #A24770 100%
+  );
+}
+
+/* Shimmer & Ambient Keyframes */
+@keyframes foilSweep {
+  0% {
+    transform: translateX(-140%) skewX(-24deg);
+    opacity: 0;
+  }
+  30% {
+    opacity: 0.55;
+  }
+  100% {
+    transform: translateX(220%) skewX(-24deg);
+    opacity: 0;
+  }
+}
+
+.animate-foil-sweep {
+  animation: foilSweep 3.8s cubic-bezier(0.25, 0.8, 0.25, 1) infinite;
+}
+
+@keyframes floatHeartDrift {
+  0% {
+    transform: translateY(0) translateX(0) rotate(-6deg) scale(0.85);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.45;
+  }
+  60% {
+    transform: translateY(-48vh) translateX(18px) rotate(10deg) scale(1.05);
+  }
+  100% {
+    transform: translateY(-102vh) translateX(-12px) rotate(-10deg) scale(0.9);
+    opacity: 0;
+  }
+}
+
+.animate-float-heart {
+  animation: floatHeartDrift var(--heart-dur, 16s) linear infinite;
+}
+
+@keyframes sparklePulse {
+  0%, 100% {
+    transform: scale(0.65) rotate(0deg);
+    opacity: 0.25;
+  }
+  50% {
+    transform: scale(1.2) rotate(22deg);
+    opacity: 0.9;
+  }
+}
+
+.animate-sparkle-twinkle {
+  animation: sparklePulse var(--twinkle-dur, 3.2s) ease-in-out infinite;
+}
+
+@keyframes cardFloatIdle {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-card-float {
+  animation: cardFloatIdle var(--float-dur, 4.4s) ease-in-out infinite;
+}
+
+@keyframes boxShakeTilt {
+  0%, 100% { transform: rotate(0deg) translateX(0); }
+  15% { transform: rotate(-4.5deg) translateX(-8px) translateY(-2px); }
+  32% { transform: rotate(4.2deg) translateX(8px) translateY(-4px); }
+  48% { transform: rotate(-3.4deg) translateX(-6px) translateY(0); }
+  65% { transform: rotate(2.6deg) translateX(5px) translateY(-2px); }
+  82% { transform: rotate(-1.5deg) translateX(-3px); }
+}
+
+.animate-box-shake {
+  animation: boxShakeTilt 0.65s cubic-bezier(0.36, 0.07, 0.19, 0.97);
+}
+
+@keyframes burstParticle {
+  0% {
+    transform: translate(0, 0) scale(0.4) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--bx, 60px), var(--by, -80px)) scale(1.1) rotate(var(--brot, 180deg));
+    opacity: 0;
+  }
+}
+
+.animate-burst-particle {
+  animation: burstParticle var(--bdur, 1.4s) cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-float-heart,
+  .animate-sparkle-twinkle,
+  .animate-card-float,
+  .animate-foil-sweep {
+    animation: none !important;
+  }
+}
